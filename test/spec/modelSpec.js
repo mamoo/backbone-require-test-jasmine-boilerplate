@@ -11,6 +11,8 @@ describe('Model :: vCard', function() {
       flag = true;
     });
 
+    //We wait until the async loading is completed
+    //https://github.com/pivotal/jasmine/wiki/Asynchronous-specs
     waitsFor(function() {
       return flag; 
     });    
