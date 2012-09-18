@@ -1,13 +1,14 @@
 require.config({
   /*baseUrl: "/js/",*/
-  urlArgs: 'cb=' + Math.random(),
+  //urlArgs: 'cb=' + Math.random(),
   paths: {
     jquery: '../lib/jquery.min',
     underscore: '../lib/underscore-min',
     backbone: '../lib/backbone-min',
     jasmine: './lib/jasmine-1.2.0/jasmine',
     'jasmine-html': './lib/jasmine-1.2.0/jasmine-html',
-    spec: './spec/'
+    spec: './spec/',
+    'jasmine-jquery': './lib/jasmine-jquery'
   },
   shim: {
     underscore: {
@@ -27,11 +28,15 @@ require.config({
     'jasmine-html': {
       deps: ['jasmine'],
       exports: 'jasmine'
+    },
+    'jasmine-jquery': {
+      deps: ['jasmine'],
+      exports: 'jasmine'
     }
   }
 });
 
-require(['underscore', 'jquery', 'jasmine-html'], function(_, $, jasmine){
+require(['underscore', 'jquery', 'jasmine-html', 'jasmine-jquery'], function(_, $, jasmine){
  
   var jasmineEnv = jasmine.getEnv();
   jasmineEnv.updateInterval = 1000;
@@ -48,6 +53,7 @@ require(['underscore', 'jquery', 'jasmine-html'], function(_, $, jasmine){
  
   specs.push('spec/dummySpec');
   specs.push('spec/modelSpec');
+  specs.push('spec/viewSpec');
   /*specs.push('spec/views/CountViewSpec');
   specs.push('spec/views/FooterViewSpec');
   specs.push('spec/views/MarkAllSpec');
